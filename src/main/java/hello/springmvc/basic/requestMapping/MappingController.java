@@ -102,6 +102,7 @@ public class MappingController {
      * MediaType.APPLICATION_JSON_VALUE
      * content 타입이 json이어야만 호출됨
      * 요청헤더의 컨탠트 타입
+     * 서버입장에서 소비하는 입장 , 요청의 컨텐트 타입을 소비하기 때문에 consume
      */
     @PostMapping(value = "/mapping-consume", consumes = MediaType.APPLICATION_JSON_VALUE) //"application/json"
     public String mappingConsumes() {
@@ -117,6 +118,9 @@ public class MappingController {
      * produces = "text/*"
      * produces = "*\/*"
      * 요청헤더의 Accept
+     * 컨트롤러가 생산하는 type produces accept랑 맞아야함 나는 이런타입을 받아드릴 수 있어
+     * 클라이언트 입장에서는 나는 json만 받아드릴 수 있어 (accept= application/json)인데
+     *여기는 "text/html 생산하는 아이임 accept json관련된것만 처리가 됨
      */
     @PostMapping(value = "/mapping-produce", produces = MediaType.TEXT_HTML_VALUE) //"text/html"
     public String mappingProduces() {
